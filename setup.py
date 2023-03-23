@@ -9,9 +9,6 @@ from setuptools import find_packages, setup
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-with open("requirements.txt", "r") as fh:
-    requirements = fh.readlines()
-    requirements = [i.strip() for i in requirements]
 
 setup(
     name="rpunct",
@@ -30,5 +27,4 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     python_requires=">=3.6",
-    install_requires=requirements,
 )
