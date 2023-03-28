@@ -450,21 +450,9 @@ def convert_examples_to_features(
             for i in range(0, len(examples), chunksize)
         ]
 
-        with Pool(process_count) as p:
-            features = list(
-                tqdm(
-                    p.imap(
-                        convert_examples_with_multiprocessing,
-                        examples,
-                    ),
-                    total=len(examples),
-                    disable=silent,
-                )
-            )
+        features = list(map(convert_examples_with_multiprocessing, examples))
 
-            features = [
-                feature for feature_group in features for feature in feature_group
-            ]
+        features = [feature for feature_group in features for feature in feature_group]
     else:
         features = [
             convert_example_to_feature(
